@@ -44,7 +44,67 @@ function init() {
     const muteIcon = document.getElementById('muteIcon');
     const unmuteIcon = document.getElementById('unmuteIcon');
     const closeInfoButton = document.getElementById('closeInfoButton');
+    const landingPage = document.getElementById('landingPage');
+    const watchDemoButton = document.getElementById('watchDemoButton');
+    const passwordInput = document.getElementById('passwordInput');
     let isMuted = true; // Video starts muted
+
+    // Watch Demo Button - Check password and hide landing page
+    if (watchDemoButton && landingPage && passwordInput) {
+        watchDemoButton.addEventListener('click', () => {
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === '1234') {
+                const ytPlayer = getPlayer();
+
+                // Start video first and wait for it to be ready
+                if (ytPlayer && ytPlayer.seekTo) {
+                    ytPlayer.seekTo(0, true);
+                    ytPlayer.unMute();
+                    ytPlayer.setVolume(100);
+                    ytPlayer.playVideo();
+
+                    // Update mute icon state to show unmuted
+                    isMuted = false;
+                    if (muteIcon && unmuteIcon) {
+                        muteIcon.classList.remove('hidden'); // Show sound waves
+                        unmuteIcon.classList.add('hidden'); // Hide X
+                    }
+
+                    // Fade in video container
+                    const videoContainer = document.querySelector('.video-container');
+                    if (videoContainer) {
+                        videoContainer.classList.add('loaded');
+                    }
+                }
+
+                landingPage.classList.add('fade-out');
+                // Wait for fade-out animation to complete before removing
+                setTimeout(() => {
+                    landingPage.style.display = 'none';
+                }, 500);
+            } else {
+                // Shake animation and show error
+                passwordInput.style.borderColor = '#e74c3c';
+                passwordInput.style.animation = 'shake 0.5s';
+                passwordInput.value = '';
+                passwordInput.placeholder = 'Wrong password! (password: 1234)';
+
+                setTimeout(() => {
+                    passwordInput.style.borderColor = '';
+                    passwordInput.style.animation = '';
+                    passwordInput.placeholder = '(password: 1234)';
+                }, 2000);
+            }
+        });
+
+        // Allow Enter key to submit
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                watchDemoButton.click();
+            }
+        });
+    }
 
     // Generate instrument navigation buttons
     generateInstrumentButtons(instruments);

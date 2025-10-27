@@ -7,11 +7,30 @@
     <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <!-- Landing Page Overlay -->
+    <div id="landingPage" class="landing-page">
+        <div class="landing-content">
+            <div class="landing-logo">
+                <img src="./assets/LandingLogo.png" alt="IMI Logo">
+            </div>
+            <input
+                type="password"
+                id="passwordInput"
+                class="password-input"
+                placeholder="(password: 1234)"
+                autocomplete="off"
+            >
+            <button id="watchDemoButton" class="watch-demo-button">
+                Watch Demo Video
+            </button>
+        </div>
+    </div>
+
     <!-- YouTube Video Background -->
     <div class="video-container">
         <iframe
             id="mainVideo"
-            src="https://www.youtube.com/embed/5cP7HtnagEk?autoplay=1&mute=1&controls=0&loop=1&playlist=5cP7HtnagEk&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1&playsinline=1&enablejsapi=1"
+            src="https://www.youtube.com/embed/5cP7HtnagEk?autoplay=0&mute=1&controls=0&loop=1&playlist=5cP7HtnagEk&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1&playsinline=1&enablejsapi=1"
             frameborder="0"
             allow="autoplay; encrypted-media"
             allowfullscreen>
@@ -21,7 +40,7 @@
 
     <!-- Logo -->
     <div class="logo">
-        <img src="./assets/IMI_logo (2).jpg" alt="IMI Logo">
+        <img src="./assets/LandingLogo.png" alt="IMI Logo">
     </div>
 
     <!-- Mute Button -->
