@@ -27,8 +27,8 @@ function generateInstrumentButtons(instruments) {
         button.innerHTML = `
             <div class="instrument-button-content">
                 <img src="${instrument.image}" alt="${instrument.name}">
-                <span class="instrument-name">${instrument.name}</span>
             </div>
+            <span class="instrument-name">${instrument.name}</span>
         `;
 
         nav.appendChild(button);

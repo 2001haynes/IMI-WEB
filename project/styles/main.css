@@ -185,6 +185,7 @@ body {
 .instrument-name {
     position: absolute;
     left: 85px;
+    top: 50%;
     white-space: nowrap;
     font-size: 0.95rem;
     font-weight: 500;
@@ -198,13 +199,13 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateX(-10px);
+    transform: translateY(-50%) translateX(-10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .instrument-button:hover .instrument-name {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 /* Main Content Area */
