@@ -10,8 +10,8 @@ This is an interactive single-page portfolio website showcasing five musical ins
 
 **Local Development:**
 - Use VS Code Live Server extension
-- Right-click on `project/index.html` and select "Open with Live Server"
-- The site will be available at `http://localhost:5500/project/`
+- Right-click on `index.html` and select "Open with Live Server"
+- The site will be available at `http://localhost:5500/`
 
 **No Build Process:**
 - Pure vanilla JavaScript with ES6 modules
@@ -117,7 +117,7 @@ This is an interactive single-page portfolio website showcasing five musical ins
 
 ## File Structure
 ```
-project/
+/
 ├── index.html                          # Main HTML (includes YouTube iframe)
 ├── styles/
 │   └── main.css                       # All styles (no preprocessor)
