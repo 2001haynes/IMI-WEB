@@ -76,9 +76,11 @@ document.getElementById('play-button').addEventListener('click', function() {
     const overlay = document.getElementById('play-button-overlay');
     const iframe = document.getElementById('youtube-iframe');
     const videoContainer = document.querySelector('.video-container');
+    const logo = document.getElementById('video-logo');
 
-    // Hide the button overlay
+    // Hide the button overlay and logo
     overlay.style.display = 'none';
+    logo.style.display = 'none';
 
     // Show and play the video
     iframe.style.display = 'block';
