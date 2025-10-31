@@ -3,85 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMI - Interactive Musical Instruments</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <title>IMI - Interactive Musical Instruments | Everyone Can Make Music</title>
+    <link rel="icon" type="image/png" href="/Assets/favicon-96x96.png" sizes="96x96" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
-    <!-- Landing Page Overlay -->
-    <div id="landingPage" class="landing-page">
-        <div class="landing-content">
-            <div class="landing-logo">
-                <img src="./assets/LandingLogo.png" alt="IMI Logo">
-            </div>
-            <input
-                type="password"
-                id="passwordInput"
-                class="password-input"
-                placeholder="(password: 1234)"
-                autocomplete="off"
-            >
-            <button id="watchDemoButton" class="watch-demo-button">
-                Watch Demo Video
+<body id="top">
+    <!-- ============================================
+         NAVIGATION
+         Fixed navigation bar with logo and menu links
+         ============================================ -->
+    <nav>
+        <div class="nav-container">
+            <a href="#top" class="logo-text">
+                <img src="Assets/IMI_LOGO.png" alt="IMI - Interactive Musical Instruments" class="logo-img">
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#instruments">Instruments</a></li>
+                <li><a href="#playalong">PlayAlong</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#bio">Bio</a></li>
+                <li><a href="#opportunities">Opportunities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </div>
-
-    <!-- YouTube Video Background -->
-    <div class="video-container">
-        <iframe
-            id="mainVideo"
-            src="https://www.youtube.com/embed/5cP7HtnagEk?autoplay=0&mute=1&controls=0&loop=1&playlist=5cP7HtnagEk&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1&playsinline=1&enablejsapi=1"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-        </iframe>
-        <div class="video-overlay"></div>
-    </div>
-
-    <!-- Logo -->
-    <div class="logo">
-        <img src="./assets/LandingLogo.png" alt="IMI Logo">
-    </div>
-
-    <!-- Mute Button -->
-    <button id="muteButton" class="mute-button" aria-label="Toggle Mute">
-        <svg id="muteIcon" class="mute-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        </svg>
-        <svg id="unmuteIcon" class="unmute-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-        </svg>
-    </button>
-
-    <!-- Floating Instrument Navigation -->
-    <nav id="instrumentNav" class="instrument-nav">
-        <!-- Instrument buttons will be dynamically generated here -->
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="content">
-        <div id="info" class="info-panel">
-            <button id="closeInfoButton" class="close-info-button" aria-label="Close Info Panel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="instrument-image">
-                <img id="instrumentImg" src="" alt="Instrument">
+    <!-- ============================================
+         HERO SECTION
+         Main landing section with headline, tagline, and demo video
+         ============================================ -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <!-- Headline & Tagline -->
+            <h1>Interactive Musical Instruments</h1>
+            <p class="hero-quote">Everyone Can Make Music</p>
+            <p class="tagline">
+                Our proprietary sensor technology leverages modern mobile devices to make expressive music-making accessible to everyone.
+            </p>
+
+            <!-- Demo Video -->
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="play-button-overlay" id="play-button-overlay">
+                        <button class="play-button" id="play-button">
+                            <span>Watch Demo</span>
+                            <div class="play-icon"></div>
+                        </button>
+                    </div>
+                    <iframe
+                        id="youtube-iframe"
+                        class="video-iframe"
+                        style="display: none;"
+                        src="https://www.youtube.com/embed/5cP7HtnagEk?enablejsapi=1&rel=0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
-            <div class="instrument-details">
-                <h2 id="instrumentName">Instrument Name</h2>
-                <p id="instrumentDescription">Instrument description goes here.</p>
+
+            <p class="video-caption">Experience the future of music expression</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PHILOSOPHY SECTION
+         Core principles and values of IMI
+         ============================================ -->
+    <section class="philosophy-section" id="philosophy">
+        <div class="philosophy-content">
+            <h2>The IMI Philosophy</h2>
+            <p class="philosophy-intro">
+                Music should be accessible to everyone. Traditional instruments require years of practice to produce satisfying results. IMI changes that—enabling immediate musical expression while preserving the depth and nuance that makes music meaningful.
+            </p>
+
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Accessibility Without Compromise</h3>
+                    <p>IMI instruments lower the barrier to entry without sacrificing <span class="highlight">expressive capability</span>. Beginners make music immediately, while advanced players discover professional-grade control.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <h3>Technology Serves Expression</h3>
+                    <p>Our Force Sensing Resistor technology translates <span class="highlight">subtle pressure variations</span> into musical nuance—bridging the gap between intention and sound.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <h3>The Joy of Creation</h3>
+                    <p>Music-making should feel natural and rewarding from day one. IMI's PlayAlong system ensures every touch produces <span class="highlight">musical results</span>—building confidence while developing skills.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <h3>Smart Architecture</h3>
+                    <p>By leveraging smartphone processing power, we deliver <span class="highlight">professional expression at consumer price points</span>—making quality instruments accessible to everyone.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <h3>Touch is Everything</h3>
+                    <p>In music, emotion flows through touch. Our instruments capture the <span class="highlight">subtlety of human expression</span>—from the gentlest touch to the most powerful strike.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <h3>Built for Everyone</h3>
+                    <p>From children taking first musical steps to experienced musicians seeking new voices, IMI instruments welcome all—offering <span class="highlight">natural musical expression</span> without prerequisites.</p>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- JavaScript Modules -->
-    <script type="module" src="./src/main.js"></script>
+    <!-- ============================================
+         PRODUCTS SECTION
+         Showcase of the five IMI instrument family members
+         ============================================ -->
+    <section class="products-section" id="instruments">
+        <h2>The IMI Family</h2>
+        <p class="products-subtitle">
+            Five expressive controllers leveraging proprietary FSR technology and smartphone architecture. Traditional instrument forms with professional expression capability—enabled by vertical manufacturing integration and smart design.
+        </p>
+
+        <div class="products-grid">
+            <!-- WindBoard -->
+            <div class="product-card">
+                <img src="Assets/Wind.jpg" alt="WindBoard" class="product-image">
+                <h3>WindBoard</h3>
+                <p>Electronic wind controller with recorder-like fingering. Express through breath pressure and lip control—creating nuanced phrases with every breath.</p>
+            </div>
+
+            <!-- MelodiKeyZ -->
+            <div class="product-card">
+                <img src="Assets/MelodiKeyZ1_cropped.png" alt="MelodiKeyZ" class="product-image">
+                <h3>MelodiKeyZ</h3>
+                <p>Touch-responsive keyboard that can be handheld, worn, or desktop. Play with breath or touch for harmonica-like expression and dynamic control.</p>
+            </div>
+
+            <!-- DrumKit -->
+            <div class="product-card">
+                <img src="Assets/DrumKit2.png" alt="DrumKit" class="product-image">
+                <h3>DrumKit</h3>
+                <p>Compact percussion with 5 drums and 5 cymbals. Squeeze for pitch modulation, pressure-controlled rolls, and talking-drum effects.</p>
+            </div>
+
+            <!-- Shaker -->
+            <div class="product-card">
+                <img src="Assets/ShakerFull.jpg" alt="Shaker" class="product-image">
+                <h3>Shaker</h3>
+                <p>Rhythm controller with real-time pitch control. Percussion meets melody—bend notes while keeping the beat with intuitive gestures.</p>
+            </div>
+
+            <!-- Syntar -->
+            <div class="product-card">
+                <img src="Assets/Syntar_Still.jpg" alt="Syntar" class="product-image">
+                <h3>Syntar</h3>
+                <p>Digital guitar controller with interchangeable bodies. Programmable strummer vanes and pressure-sensitive fretboard capture bends, hammer-ons, and harmonics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PLAYALONG SECTION
+         Explanation of the PlayAlong learning system
+         ============================================ -->
+    <section class="playalong-section" id="playalong">
+        <div class="playalong-content">
+            <h2>Introducing PlayAlong</h2>
+            <p class="playalong-tagline">"PlayAlong is to music what a calculator is to math"</p>
+
+            <p class="playalong-description">
+                You provide the <strong>timing</strong> and <strong>expression</strong>—PlayAlong provides harmonic and melodic support. All notes flow in smooth, connected streams. When you touch your instrument, the current note unmutes. The harder you press, the louder it plays.
+            </p>
+
+            <p class="playalong-description">
+                <strong>You can't play a wrong note.</strong> Focus entirely on expression—the WHEN and HOW of music. Release or touch again, and the music flows naturally with your phrasing.
+            </p>
+
+            <div class="feature-boxes">
+                <div class="feature-box">
+                    <h3>Always Musical</h3>
+                    <p>Continuous note streams mean every touch creates sound</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Your Expression</h3>
+                    <p>Pressure maps to dynamics—your unique voice</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Any Song</h3>
+                    <p>Transform your favorites into IMI experiences</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Play Together</h3>
+                    <p>SyncUp mode for synchronized group performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         COMPETITIVE ADVANTAGES SECTION
+         IMI's unique market position and technology advantages
+         ============================================ -->
+    <section class="tech-section" id="technology">
+        <div class="tech-content">
+            <h2>Competitive Advantages</h2>
+            <p class="tech-description">
+                <strong>IMI's unique position enables professional expression at unprecedented price points through proprietary technology and smart architecture.</strong>
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #4A90E2;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #000;">1. Patents</h3>
+                    <p style="color: #666; line-height: 1.7;">Force Sensing Resistor technology, invented by Franklin Eventoff. Protected intellectual property with decades of development refinement.</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #4A90E2;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #000;">2. Manufacturing</h3>
+                    <p style="color: #666; line-height: 1.7;">Vertical integration through Sensitronics. Direct manufacturing access eliminates middleman markup and ensures supply chain control.</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #4A90E2;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #000;">3. Expertise</h3>
+                    <p style="color: #666; line-height: 1.7;">40+ years optimizing FSR implementation in musical instruments. Unmatched knowledge of pressure-sensitive expression technology.</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #4A90E2;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #000;">4. Cost Structure</h3>
+                    <p style="color: #666; line-height: 1.7;">Manufacturing cost vs. retail pricing advantage. Proprietary FSR access creates sustainable margin opportunities unavailable to competitors.</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #4A90E2;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #000;">5. Architecture</h3>
+                    <p style="color: #666; line-height: 1.7;">Smartphone-powered strategy eliminates expensive internal components. Professional expression at consumer price points through smart design.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <p style="font-size: 1.2rem; color: #000; font-weight: 500; margin-bottom: 1rem;">
+                    The Result: A Sustainable Market Position
+                </p>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.8; max-width: 900px; margin: 0 auto;">
+                    IMI combines proprietary sensor technology, vertical manufacturing integration, and innovative architecture to deliver professional-grade expressive instruments at price points competitors cannot match. This creates opportunities for strategic partnerships, licensing agreements, and market expansion across multiple channels.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         INVENTOR BIO SECTION
+         Background and credentials of Franklin Eventoff
+         ============================================ -->
+    <section class="tech-section" id="bio" style="padding: calc(5rem + 20px) 2rem 5rem; background: #f8f9fa;">
+        <div class="tech-content">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem; font-weight: 700;">About the Inventor</h2>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="market-card bio-card" onclick="toggleBio(this)" style="cursor: pointer;">
+                    <div class="market-header" style="background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%); color: white; padding: 2rem; display: flex; justify-content: space-between; align-items: center; border-radius: 15px 15px 0 0;">
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Franklin Eventoff</h3>
+                            <p style="opacity: 0.9; font-size: 1.1rem;">Pioneer of Force Sensing Technology | Founder, Interlink Electronics (NASDAQ: LINK) & Sensitronics</p>
+                        </div>
+                        <div class="expand-icon" style="font-size: 1.5rem; transition: transform 0.3s;">▼</div>
+                    </div>
+                    <div class="market-content bio-content" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease;">
+                        <div style="padding: 2.5rem; background: white; border-radius: 0 0 15px 15px;">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                                Franklin Eventoff invented Force Sensing Resistor (FSR) technology in 1977 and patented it in 1980. His innovations have earned prestigious recognition including the <strong>California Governor's Award for Innovation (1986)</strong> and the <strong>International IR 100 Award</strong> for FSR development (1987).
+                            </p>
+
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                                In 1985, Franklin founded <strong>Interlink Electronics (NASDAQ: LINK)</strong>, which became a leading supplier of FSR technology globally. The company was recently acquired, validating decades of innovation and market leadership. In 2001, he founded <strong>Sensitronics</strong>, which today supplies FSRs to leading musical instrument manufacturers worldwide and provides IMI's vertical manufacturing integration.
+                            </p>
+
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                                Franklin's FSR technology powers products across multiple industries—from consumer electronics to medical devices and aerospace applications. He has successfully licensed musical instrument innovations to major companies including <strong>Mattel</strong> (Magical Musical Thing, 1978) and <strong>Hasbro</strong> (Electronic Orchestra, 1982), and licensed The KEY instrument—IMI's predecessor—to Lonestar Technologies in 1992.
+                            </p>
+
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 2rem;">
+                                IMI represents nearly <strong>50 years of continuous FSR refinement</strong>, combining Franklin's patented technology with vertical manufacturing integration. Recent innovations include the <strong>XactFSR (2013)</strong> and the newly patented <strong>LowDrift FSR (2025)</strong>, ensuring IMI instruments deliver professional expression at unprecedented price points.
+                            </p>
+
+                            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #4A90E2;">
+                                <h4 style="color: #4A90E2; margin-bottom: 1rem; font-size: 1.2rem;">Notable Milestones</h4>
+                                <ul style="margin-left: 1.5rem; color: #666; line-height: 2;">
+                                    <li><strong>1977:</strong> Invented Force Sensing Resistor technology</li>
+                                    <li><strong>1980:</strong> Patented FSR technology</li>
+                                    <li><strong>1979:</strong> Created 650 Sonica instruments using FSR</li>
+                                    <li><strong>1982:</strong> Licensed Electronic Orchestra to Hasbro Toys</li>
+                                    <li><strong>1985:</strong> Founded Interlink Electronics (NASDAQ: LINK)</li>
+                                    <li><strong>1986:</strong> California Governor's Award for Innovation</li>
+                                    <li><strong>1987:</strong> International IR 100 Award for FSR development</li>
+                                    <li><strong>1992:</strong> Licensed The KEY instrument to Lonestar Technologies</li>
+                                    <li><strong>2001:</strong> Founded Sensitronics</li>
+                                    <li><strong>2013:</strong> Developed XactFSR technology</li>
+                                    <li><strong>2025:</strong> Patented LowDrift FSR</li>
+                                </ul>
+                            </div>
+
+                            <p style="font-size: 1.2rem; font-weight: 500; color: #4A90E2; margin-top: 2rem; text-align: center;">
+                                This isn't Franklin's first successful venture—he's built, scaled, and exited companies in this space for over 40 years.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PARTNERSHIP OPPORTUNITIES SECTION
+         Market opportunities and potential partnerships
+         ============================================ -->
+    <section class="markets-section" id="opportunities">
+        <div class="markets-content">
+            <h2>Partnership Opportunities</h2>
+            <p class="markets-intro">
+                IMI's technology creates unique opportunities across multiple markets. Our phone-driven architecture, PlayAlong system, and accessible design enable partnerships with diverse industry leaders.
+            </p>
+
+            <div class="market-cards">
+                <!-- Karaoke Companies -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">🎤</div>
+                        <div class="market-title">
+                            <h3>Karaoke Companies</h3>
+                            <p>Natural product line extension</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                IMI is "karaoke for instruments"—the exact same proven business model applied to instrumental music. Same distribution channels, same content subscription model, same customers—just add instruments alongside your microphones.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Companies -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">📱</div>
+                        <div class="market-title">
+                            <h3>Phone Ecosystem Partners</h3>
+                            <p>Mobile accessory opportunity</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                IMI instruments use smartphones as their processing brain, making them premium mobile accessories for your 9,000+ retail locations. Turn phone purchases into bundled sales with monthly payment plans and ongoing subscription revenue streams.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Education -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">📚</div>
+                        <div class="market-title">
+                            <h3>Music Education</h3>
+                            <p>Sheet music + hardware synergy</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                Our technology converts your sheet music and tablature catalogs into interactive MIDI experiences. Publishers provide content, IMI provides affordable hardware—together we create complete learning systems for schools and students.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creator Economy -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">📹</div>
+                        <div class="market-title">
+                            <h3>Content Creator Tools</h3>
+                            <p>Music for content creation</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                Creators need original music but lack musical training—IMI solves this. Enable YouTube creators, podcasters, and streamers to make authentic music in minutes without lessons or licensing fees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traditional Instrument Companies -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">🎸</div>
+                        <div class="market-title">
+                            <h3>Instrument Companies</h3>
+                            <p>Gateway product strategy</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                IMI creates new musicians who graduate to your premium instruments—we expand the market rather than compete. Affordable entry ($49-$99) validates serious buyers before they invest $300-$2,000 in traditional instruments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- International Manufacturing -->
+                <div class="market-card" onclick="toggleMarket(this)">
+                    <div class="market-header">
+                        <div class="market-icon">🌏</div>
+                        <div class="market-title">
+                            <h3>International Partners</h3>
+                            <p>Regional licensing opportunities</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="market-content">
+                        <div class="market-body">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                                Complete turnkey licensing package: hardware designs, software platform, sheet music conversion tools, and 40+ years of FSR manufacturing expertise. Launch IMI in your territory with everything included—from designs to market in 6-12 months.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT SECTION
+         Contact information and partnership inquiries
+         ============================================ -->
+    <section class="contact-section" id="contact">
+        <h2>Strategic Partnerships & Inquiries</h2>
+        <div class="contact-info">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #d0d0d0;">
+                Interested in partnerships, licensing, or distribution opportunities?
+            </p>
+
+            <p style="font-size: 1.15rem; margin-bottom: 1.5rem; color: #fff; font-weight: 500;">
+                We're happy to schedule a Zoom demonstration to discuss partnership opportunities.
+            </p>
+
+            <a href="mailto:franklin@interactivemusic.com?subject=Request for Zoom Meeting - IMI Partnership"
+               style="display: inline-block; background: white; color: #4A90E2; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-bottom: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(255,255,255,0.3)';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                Schedule a Zoom Meeting
+            </a>
+
+            <br><br>
+            <strong>Interactive Musical Instruments</strong>
+            <p>Franklin Eventoff, Founder</p>
+            <p style="font-size: 0.95rem; color: #999; margin-top: 0.5rem;">Inventor of Force Sensing Resistor Technology</p>
+            <br>
+            <p>Email: <a href="mailto:franklin@interactivemusic.com">franklin@interactivemusic.com</a></p>
+            <p>Phone: <a href="tel:+13607668800">(360) 766-8800</a></p>
+            <p>Mobile: <a href="tel:+13602018696">(360) 201-8696</a></p>
+            <br>
+            <p>16120 Park Place, Bow, WA 98232 USA</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         Copyright and company information
+         ============================================ -->
+    <footer>
+        <p>&copy; 2025 Interactive Musical Instruments. All rights reserved.</p>
+        <p>Everyone Can Make Music | In Music, Emotion is Expressed with Touch</p>
+
+        <div class="footer-timeline">
+            <p>FSR Technology invented 1977 | Sensitronics founded 2001 | IMI 2025</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js" defer></script>
 </body>
 </html>

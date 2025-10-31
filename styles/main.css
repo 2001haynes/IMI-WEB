@@ -1,8 +1,12 @@
-/**
- * IMI Interactive Portfolio - Main Styles
- */
+/* ============================================
+   IMI - Interactive Musical Instruments
+   Main Stylesheet
+   ============================================ */
 
-/* Reset and Base Styles */
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,551 +14,793 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
-    background: #000;
-    color: #fff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
 }
 
-/* Video Background */
-.video-container {
+html {
+    scroll-padding-top: 0px;
+    scroll-behavior: smooth;
+}
+
+/* Pull sections up higher - negative margin scrolls them closer to top */
+section {
+    scroll-margin-top: -30px;
+}
+
+.highlight {
+    color: #4A90E2;
+    font-weight: 600;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav {
     position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4A90E2;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #1a1a1a;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    margin-top: 70px;
+    padding: 5rem 2rem 7rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                url('../Assets/hero_background.jpg') center/cover no-repeat;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -3px;
+    line-height: 1.05;
+}
+
+.hero-quote {
+    font-size: 2rem;
+    font-style: italic;
+    color: #4A90E2;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   VIDEO CONTAINER
+   ============================================ */
+
+.video-container {
+    max-width: 1000px;
+    margin: 4rem auto 2rem;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.video-placeholder {
+    position: relative;
+    background: #000;
+    padding-bottom: 56.25%;
+}
+
+.video-iframe {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    background: #000;
-    opacity: 0;
-    transition: opacity 1s ease;
+    border-radius: 20px;
+    border: none;
 }
 
-.video-container.loaded {
-    opacity: 1;
-}
-
-#mainVideo {
+.play-button-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 56.25vw; /* 16:9 Aspect ratio height */
-    min-height: 100vh;
-    min-width: 177.77vh; /* 16:9 Aspect ratio width */
     transform: translate(-50%, -50%);
-    pointer-events: none;
+    z-index: 10;
+}
+
+.play-button {
+    background: #4A90E2;
+    color: white;
     border: none;
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.1);
-    /* Minimal overlay to let video shine through */
-}
-
-/* Logo */
-.logo {
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    z-index: 200;
-    width: 120px;
-    height: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-/* Mute Button */
-.mute-button {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    z-index: 200;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 1.75rem 4.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.5);
+    transition: all 0.3s;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-.mute-button:hover {
-    transform: scale(1.05);
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.mute-button svg {
-    width: 24px;
-    height: 24px;
-    color: #fff;
-    transition: opacity 0.3s ease;
-}
-
-.mute-button .hidden {
-    display: none;
-}
-
-/* Floating Instrument Navigation */
-.instrument-nav {
-    position: fixed;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
-    z-index: 100;
 }
 
-.instrument-button {
-    position: relative;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: visible;
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    width: 70px;
-    height: 70px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+.play-button:hover {
+    background: #3A7BC8;
+    transform: scale(1.08);
+    box-shadow: 0 20px 50px rgba(74, 144, 226, 0.6);
 }
 
-.instrument-button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
+.play-icon {
+    width: 0;
+    height: 0;
+    border-left: 18px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 5px;
 }
 
-.instrument-button.active {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-    border-color: rgba(102, 126, 234, 0.6);
-    box-shadow: 0 4px 24px rgba(102, 126, 234, 0.4);
+.video-caption {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
 }
 
-.instrument-button-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    position: relative;
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
+/* ============================================
+   PHILOSOPHY SECTION
+   ============================================ */
+
+.philosophy-section {
+    padding: 7rem 2rem 7rem;
+    background: #ffffff;
 }
 
-.instrument-button img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 16px;
-    transform: scale(1.2);
+.philosophy-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.instrument-name {
-    position: absolute;
-    left: 85px;
-    top: 50%;
-    white-space: nowrap;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateY(-50%) translateX(-10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+.philosophy-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
-.instrument-button:hover .instrument-name {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
+.philosophy-intro {
+    font-size: 1.3rem;
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
 }
 
-/* Main Content Area */
-.content {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 480px;
-    height: 100vh;
-    padding: 3rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
 }
 
-.info-panel {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border-radius: 24px;
+.philosophy-card {
+    background: #f8f9fa;
     padding: 2.5rem;
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    pointer-events: auto;
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    position: relative;
+    border-radius: 15px;
+    text-align: left;
 }
 
-.info-panel.visible {
-    opacity: 1;
-    transform: translateX(0);
+.philosophy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+    font-weight: 600;
 }
 
-.close-info-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+.philosophy-card p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
-.close-info-button:hover {
-    transform: scale(1.1);
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
-    background: rgba(255, 255, 255, 0.12);
+/* ============================================
+   PRODUCTS SECTION
+   ============================================ */
+
+.products-section {
+    padding: 7rem 2rem;
+    background: #f8f9fa;
 }
 
-.close-info-button svg {
-    width: 20px;
-    height: 20px;
-    color: #fff;
+.products-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.products-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
 }
 
-.instrument-image {
-    margin-bottom: 2rem;
+.products-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    background: #ffffff;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.instrument-image img {
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
     width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
+    height: 250px;
+    object-fit: cover;
+    background: #e5e5e5;
 }
 
-.instrument-image:hover img {
-    transform: scale(1.05);
+.product-card h3 {
+    font-size: 1.6rem;
+    margin: 1.5rem 1.5rem 1rem;
+    font-weight: 600;
 }
 
-.instrument-details h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 2px 12px rgba(102, 126, 234, 0.4));
-}
-
-.instrument-details p {
-    font-size: 1rem;
+.product-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .content {
-        width: 400px;
-        padding: 2rem 1.5rem;
-    }
+/* ============================================
+   PLAYALONG SECTION
+   ============================================ */
 
-    .info-panel {
-        padding: 2rem;
-    }
-
-    .instrument-details h2 {
-        font-size: 1.75rem;
-    }
+.playalong-section {
+    padding: 7rem 2rem;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
 }
 
-@media (max-width: 768px) {
-    .logo {
-        width: 90px;
-        height: auto;
-        top: 1.5rem;
-        left: 1.5rem;
-    }
-
-    .instrument-nav {
-        left: 50%;
-        top: auto;
-        bottom: 2rem;
-        transform: translateX(-50%);
-        flex-direction: row;
-        gap: 0.75rem;
-    }
-
-    .instrument-button {
-        width: 60px;
-        height: 60px;
-    }
-
-    .instrument-name {
-        left: 50%;
-        top: -50px;
-        transform: translateX(-50%) translateY(-10px);
-    }
-
-    .instrument-button:hover .instrument-name {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .content {
-        width: 100%;
-        height: auto;
-        position: relative;
-        top: auto;
-        right: auto;
-        padding: 1.5rem;
-        padding-top: 120px;
-        padding-bottom: 140px;
-    }
-
-    .info-panel {
-        padding: 1.5rem;
-    }
-
-    .instrument-details h2 {
-        font-size: 1.5rem;
-    }
-
-    .instrument-details p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Landing Page */
-.landing-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease;
-}
-
-.landing-page.fade-out {
-    opacity: 0;
-}
-
-.landing-content {
-    background: #ffffff;
-    border-radius: 32px;
-    padding: 4rem 5rem;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes scaleIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-    20%, 40%, 60%, 80% { transform: translateX(10px); }
-}
-
-.landing-logo {
-    width: 400px;
-    max-width: 90vw;
-    height: auto;
-    border-radius: 24px;
-    overflow: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
-.landing-logo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.password-input {
-    width: 100%;
-    max-width: 350px;
-    padding: 1rem 1.5rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    font-size: 1rem;
+.playalong-content {
+    max-width: 1000px;
+    margin: 0 auto;
     text-align: center;
-    transition: all 0.3s ease;
-    outline: none;
-    background: #ffffff;
-    color: #333;
 }
 
-.password-input::placeholder {
-    color: #999;
+.playalong-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.playalong-tagline {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.playalong-description {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.feature-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.feature-box p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ============================================
+   TECHNOLOGY / ADVANTAGES SECTION
+   ============================================ */
+
+.tech-section {
+    padding: 7rem 2rem;
+    background: #ffffff;
+}
+
+.tech-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tech-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.tech-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+/* ============================================
+   MARKET OPPORTUNITIES SECTION
+   ============================================ */
+
+.markets-section {
+    padding: 7rem 2rem;
+    background: #f8f9fa;
+}
+
+.markets-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.markets-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.markets-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+}
+
+.market-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.market-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #e5e5e5;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.market-card:hover {
+    border-color: #4A90E2;
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+}
+
+.market-card.active {
+    border-color: #4A90E2;
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.3);
+}
+
+.market-header {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-icon {
+    font-size: 2rem;
+}
+
+.market-title {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.market-title h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.market-title p {
+    opacity: 0.9;
     font-size: 0.95rem;
 }
 
-.password-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+.expand-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s;
 }
 
-.watch-demo-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 16px;
-    padding: 1.2rem 3rem;
+.market-card.active .expand-icon {
+    transform: rotate(180deg);
+}
+
+.bio-card.active .expand-icon {
+    transform: rotate(180deg);
+}
+
+.bio-card.active .bio-content {
+    max-height: 3000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.market-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.market-card.active .market-content {
+    max-height: 2000px;
+}
+
+.market-body {
+    padding: 2rem;
+}
+
+.market-body h4 {
+    color: #4A90E2;
     font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin: 1.5rem 0 1rem;
 }
 
-.watch-demo-button:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 12px 48px rgba(102, 126, 234, 0.6);
-    border-color: rgba(255, 255, 255, 0.5);
+.market-body ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.watch-demo-button:active {
-    transform: scale(0.98);
+.market-body li {
+    margin-bottom: 0.5rem;
+    color: #666;
+    line-height: 1.6;
 }
 
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact-section {
+    padding: 7rem 2rem;
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    font-size: 1.05rem;
+}
+
+.contact-info a {
+    color: #4A90E2;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: #000;
+    color: #999;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.footer-timeline {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet sizing */
+@media (max-width: 1024px) and (min-width: 769px) {
+    html {
+        scroll-padding-top: 0px;
+    }
+
+    section {
+        scroll-margin-top: -25px;
+    }
+}
+
+/* Mobile sizing */
 @media (max-width: 768px) {
-    .landing-content {
-        padding: 3rem 2.5rem;
-        gap: 1.5rem;
-        margin: 1rem;
+    /* Adjust scroll padding for mobile - pull sections higher */
+    html {
+        scroll-padding-top: 0px;
     }
 
-    .landing-logo {
-        width: 280px;
-        max-width: 85vw;
+    section {
+        scroll-margin-top: 40px;
     }
 
-    .password-input {
-        font-size: 0.95rem;
-        padding: 0.9rem 1.2rem;
+    /* Navigation - Mobile Menu */
+    .hamburger {
+        display: flex;
     }
 
-    .watch-demo-button {
-        padding: 1rem 2.5rem;
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+    }
+
+    .nav-links li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2.5rem 1.5rem 3.5rem;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                    url('../Assets/hero_background.jpg') center/cover no-repeat;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+    }
+
+    .hero-quote {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .tagline {
         font-size: 1rem;
+        margin-bottom: 2rem;
     }
-}
 
-/* Scrollbar Styling */
-.instrument-nav::-webkit-scrollbar {
-    width: 6px;
-}
+    /* Video */
+    .video-container {
+        margin: 2rem auto 1rem;
+    }
 
-.instrument-nav::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
+    .play-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
 
-.instrument-nav::-webkit-scrollbar-thumb {
-    background: rgba(102, 126, 234, 0.5);
-    border-radius: 10px;
-}
+    .play-icon {
+        border-left: 14px solid white;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
 
-.instrument-nav::-webkit-scrollbar-thumb:hover {
-    background: rgba(102, 126, 234, 0.7);
+    /* Sections - Reduce Padding */
+    .philosophy-section,
+    .products-section,
+    .playalong-section,
+    .tech-section,
+    .markets-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .philosophy-section h2,
+    .products-section h2,
+    .playalong-section h2,
+    .tech-section h2,
+    .markets-section h2 {
+        font-size: 2rem;
+    }
+
+    /* Force Single Column Grids */
+    .philosophy-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature-boxes {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .market-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* PlayAlong */
+    .playalong-tagline {
+        font-size: 1.4rem;
+    }
+
+    .playalong-description {
+        font-size: 1.1rem;
+    }
+
+    /* Contact */
+    .contact-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1.5rem;
+    }
 }

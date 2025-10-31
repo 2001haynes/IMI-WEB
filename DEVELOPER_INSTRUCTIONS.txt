@@ -1,0 +1,56 @@
+IMI WEBSITE - DEVELOPER INSTRUCTIONS
+====================================
+
+VIDEO INTEGRATION NEEDED
+-------------------------
+
+The website is complete except for the product demo video.
+
+WHERE TO ADD THE VIDEO:
+-----------------------
+Open: IMI_Website_COMPLETE_WITH_MARKETS.html
+
+Search for: "VIDEO SECTION - DEVELOPER INSTRUCTIONS"
+
+You'll find clear comment blocks marking exactly where to add the video.
+
+RECOMMENDED VIDEO SPECS:
+------------------------
+- Format: MP4 (H.264 codec)
+- Size: 20-30MB (compress if larger)
+- Aspect Ratio: 16:9
+- Resolution: 1280x720 or 1920x1080
+- Controls: Enabled
+- Autoplay: Disabled
+
+EXAMPLE CODE PROVIDED:
+----------------------
+See the commented-out HTML5 video example in the code.
+Simply uncomment and add your video filename.
+
+CURRENT PLACEHOLDER:
+-------------------
+The site currently has a styled placeholder with "Watch Demo" button.
+This should be replaced with the actual video element.
+
+TESTING:
+--------
+After adding video, test that:
+1. Video loads properly
+2. Controls work (play, pause, volume)
+3. Video is responsive on mobile devices
+4. Page loads reasonably fast
+
+DEPLOYING:
+----------
+All image files are needed:
+- Wind.jpg
+- MelodiKeyZ1_cropped.png  
+- DrumKit2.png
+- ShakerFull.jpg
+- Syntar_Still.jpg
+- IMI_logo__2_.jpg
+
+Upload all files to the same directory on your web server.
+
+Questions? Contact Franklin Eventoff at franklin@interactivemusic.com
