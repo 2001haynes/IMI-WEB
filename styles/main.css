@@ -717,7 +717,7 @@ footer p {
     .hero {
         padding: 2.5rem 1.5rem 3.5rem;
         background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                    url('../Assets/hero_background.jpg') center/cover no-repeat;
+                    url('./assets/hero_background.jpg') center/cover no-repeat;
     }
 
     .hero h1 {
